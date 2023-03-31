@@ -6,7 +6,6 @@
     margin-right: 7px;
     margin-bottom: 7px;
     border-color: black;
-    width: 10vw;
     background: black;
     cursor: pointer;
 }
@@ -41,3 +40,38 @@
 .modal-header.border-0, .modal-footer.border-0 {
     border-bottom: none;
 }
+
+.movie-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  
+  @media screen and (max-width: 991px) {
+    .movie-card {
+      width: calc(100% / 5 - 20px);
+      margin-bottom: 20px;
+    }
+  }
+  
+  @media screen and (max-width: 575px) {
+    .movie-card {
+      width: calc(100% / 3 - 20px); 
+      margin-bottom: 20px;
+    }
+  }
+  
+  @media screen and (min-width: 992px) {
+    .movie-card {
+      width: calc(100% / 8 - 20px); 
+      margin-bottom: 20px;
+    }
+  }
+  
+  @media screen and (min-width: 576px) and (max-width: 991px) {
+    .movie-card {
+      width: calc(100% / 5 - 20px); 
+      margin-bottom: 20px;
+    }
+  }
+  

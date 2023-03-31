@@ -4,21 +4,20 @@
 <div class="home-wrapper">
   <div style="color: #ffffff; margin-bottom: 7px;" class="fs-4 fw-bold" >Latest Movies</div>
     <div class="card-group">
-        <div class="flex flew-row flex-wrap" *ngFor="let movie of movieList; let i = index">
-            <div  class="card movie-card"  data-bs-toggle="modal" data-bs-target="#staticBackdrop" >
+        <div class="flex flew-row flex-wrap movie-container">
+            <div *ngFor="let movie of movieList; let i = index" class="card movie-card"  data-bs-toggle="modal" data-bs-target="#staticBackdrop" >
                 <img (click)="getIndexOfClickedCard(i)" [src]='movie.moviePosterLink' class="card-img-top movie-card-img"  [alt]="movie._id">
                 <div  class="card-body" *ngIf="" >
                     <div class="card-title movie-title">{{movie.movieName}}</div>
                     <div class="card-text movie-text">{{movie.movieDescription.length > 40 ? movie.movieDescription.substr(0, 40) + "..." : movie.movieDescription}}</div>
                     <div class="movie-card-date">Release Date: </div>
                     <div [innerText] = "movie.releaseDate" class="movie-card-date" ></div>
-                  </div>
+                </div>
             </div>
-
-            
         </div>
     </div>
 </div>
+
 
 <!-- Movie modal  -->
 
