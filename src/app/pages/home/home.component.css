@@ -1,0 +1,43 @@
+.home-wrapper{
+    margin-top: 10vh;
+}
+
+.movie-card{
+    margin-right: 7px;
+    margin-bottom: 7px;
+    border-color: black;
+    width: 10vw;
+    background: black;
+    cursor: pointer;
+}
+
+.movie-title{
+    font-weight: bold;
+    color: #E67877;
+    font-size: 1.2rem;
+}
+
+.movie-modal-description{
+    font-size: 1 rem;
+    color: #F1F5F2;
+    margin-bottom: 5px;
+}
+
+.movie-modal-date{
+    font-size: 1 rem;
+    color : #ffffff;
+}
+
+
+.modal-body {
+    background-color: black;
+}
+
+.modal-header, .modal-footer {
+    background-color: black;
+    color: white;
+}
+
+.modal-header.border-0, .modal-footer.border-0 {
+    border-bottom: none;
+}

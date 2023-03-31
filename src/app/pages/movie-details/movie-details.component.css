@@ -1,0 +1,13 @@
+/* Dark theme styles */
+.container-fluid {
+    background: #000000;
+  }
+  
+  h1, p, h2 {
+    color: #fff;
+  }
+
+.movie-trailer{
+    height: 30vh;
+}
+  

@@ -1,0 +1,53 @@
+<!-- Movie list  -->
+
+<div class="home-wrapper">
+    <div class="card-group">
+        <div class="flex flew-row flex-wrap" *ngFor="let movie of movieList; let i = index">
+            <div  class="card movie-card"  data-bs-toggle="modal" data-bs-target="#staticBackdrop" >
+                <img (click)="getIndexOfClickedCard(i)" [src]='movie.moviePosterLink' class="card-img-top movie-card-img"  [alt]="movie._id">
+                <div  class="card-body" *ngIf="" >
+                    <div class="card-title movie-title">{{movie.movieName}}</div>
+                    <div class="card-text movie-text">{{movie.movieDescription.length > 40 ? movie.movieDescription.substr(0, 40) + "..." : movie.movieDescription}}</div>
+                    <div class="movie-card-date">Release Date: </div>
+                    <div [innerText] = "movie.releaseDate" class="movie-card-date" ></div>
+                  </div>
+            </div>
+
+            
+        </div>
+    </div>
+</div>
+
+<!-- Movie modal  -->
+
+<div class="modal fade movie-modal" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header  border-0">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">{{selectedMovie.movieName}}</h1>
+          <button style="background-color: white;" id="movie-modal-close" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+              <div class="col-md-4">
+                <img [src]="selectedMovie.moviePosterLink" class="img-fluid" alt="Movie Poster">
+              </div>
+              <div class="col-md-8">
+                <div class="movie-modal-description " >{{selectedMovie.movieDescription}}</div>
+                <div style="margin-bottom: 10px;" class="movie-modal-date ">Release Date: {{selectedMovie.releaseDate}} </div>
+                <div style="display: flex; flex-direction: row-reverse; margin-bottom: 7px;">
+                    <button (click)="closeModal()" type="button" class="btn btn-secondary" [routerLink]="['/movie',selectedMovie._id]" data-dismiss="modal">Show Details</button>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+
+
+  
+
+

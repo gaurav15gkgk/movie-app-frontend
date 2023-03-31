@@ -1,0 +1,18 @@
+<!-- Movie details  -->
+
+<div class="container">
+    <div class="row mt-5">
+      <div class="col-md-8">
+        <div class="ratio ratio-16x9">
+            <iframe [src]="movieDetail.trailerLink" title="YouTube Trailer" allowfullscreen allow="autoplay"></iframe>
+          </div>
+      </div>
+      <div class="col-md-4">
+        <h2 class="mb-3">{{movieDetail.movieName}}</h2>
+        <p><strong>Genre: </strong>{{ movieDetail.movieGenres.join(' , ')}} </p>
+        <p><strong>Language:</strong>{{movieDetail.language}}</p>
+        <p><strong>Release Date:</strong> {{movieDetail.releaseDate}}</p>
+        <p><strong>Description:</strong> {{movieDetail.movieDescription}}</p>
+      </div>
+    </div>
+</div>
