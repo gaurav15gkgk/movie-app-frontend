@@ -1,5 +1,5 @@
 // importing libraries
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 //importing services
 import {MovieApiServiceService} from '../../services/movie-api-service.service'
@@ -13,7 +13,7 @@ import { MovieInterface } from 'src/app/interface/movie-interface';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit  {
   //declaring variables to store the api data
   movieList : MovieInterface[]  = []
   base64Data : any
@@ -38,27 +38,27 @@ export class HomeComponent {
     12 : 'Dec'
   }
 
-  constructor(private movieApiService: MovieApiServiceService) {
-    
-    
+  constructor(private movieApiService: MovieApiServiceService) {}
+
+  ngOnInit(){
     this.movieApiService.getMovies()
-      .subscribe((resp: MoviesApiInterface) => {
-        resp.data.map((m, i) => {
-          this.movieList.push(m)
-          this.movieApiService.getMoviePoster(m.moviePosterLink)
-            .subscribe(data => {
-              const reader = new FileReader()
-              reader.onloadend = () => {
-                this.movieList[i].moviePosterLink = reader.result
-              }
-              reader.readAsDataURL(data)
-            })
-          let date = new Date(m.releaseDate)
-          this.movieList[i].releaseDate = `${date.getDate()}, ${ this.monthToMonthNameMap[date.getMonth() + 1] } ${date.getFullYear()}`
-        })
-      }, (error) => {
-        console.log(error)
+    .subscribe((resp: MoviesApiInterface) => {
+      resp.data.map((m, i) => {
+        this.movieList.push(m)
+        this.movieApiService.getMoviePoster(m.moviePosterLink)
+          .subscribe(data => {
+            const reader = new FileReader()
+            reader.onloadend = () => {
+              this.movieList[i].moviePosterLink = reader.result
+            }
+            reader.readAsDataURL(data)
+          })
+        let date = new Date(m.releaseDate)
+        this.movieList[i].releaseDate = `${date.getDate()}, ${ this.monthToMonthNameMap[date.getMonth() + 1] } ${date.getFullYear()}`
       })
+    }, (error) => {
+      console.log(error)
+    })
   }
 
 

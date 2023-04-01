@@ -1,5 +1,5 @@
 // importing libraries
-import { Component} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 
@@ -14,7 +14,7 @@ import { MovieDetailInterface } from 'src/app/interface/movie-detail-interface';
   templateUrl: './movie-details.component.html',
   styleUrls: ['./movie-details.component.css']
 })
-export class MovieDetailsComponent {
+export class MovieDetailsComponent implements OnInit{
   
   //declaring variables to store the api data
   movieId : string | any = ''
@@ -39,11 +39,15 @@ export class MovieDetailsComponent {
 
   constructor(private movieApiService : MovieApiServiceService, private router : ActivatedRoute, private sanatizer : DomSanitizer){
     
-    // extract movieId from url params
-    this.movieId = this.router.snapshot.paramMap.get('id')
+   
+  }
+
+  ngOnInit(): void {
+     // extract movieId from url params
+     this.movieId = this.router.snapshot.paramMap.get('id')
     
-    // call the movie details api
-    this.getMovieDetail(this.movieId)
+     // call the movie details api
+     this.getMovieDetail(this.movieId)
   }
 
   getMovieDetail(id : string){
